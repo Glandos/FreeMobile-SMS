@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <title>Envoi de SMS</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{{  url_for('static', filename='css/bootstrap.css') }}">
+    <link rel="stylesheet" href="{{  url_for('static', filename='css/bootstrap-theme.css') }}">
+    <script type=text/javascript src="{{  url_for('static', filename='js/jquery.js') }}"></script>
+    <script type=text/javascript src="{{  url_for('static', filename='js/bootstrap.js') }}"></script>
+    <script type=text/javascript src="{{  url_for('static', filename='js/sms.js') }}"></script>
+  </head>
+  <body>
+    <div class="container">
+      <h1 class="text-center">Envoi de SMS</h1>
+      <div class="row">
+        <div class="col-sm-12 col-md-2">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              Destinataire
+            </div>
+            <div class="list-group" id="dest">
+              {% for dest in dests | sort %}
+              <a href="#" class="list-group-item{% if loop.first %} active{% endif %}">{{ dest }}</a>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-12 col-md-10">
+          <form id='sms_form'>
+            <div class="row">
+              <div class="col-xs-12 col-sm-9">
+                <textarea  placeholder="Contenu du SMS. N'oubliez pas de le signer !" required name='content' maxlength='1600' class='form-control' rows='4' autofocus></textarea>
+              </div>
+              <div class="col-xs-12 col-sm-3">
+                <div class='btn-group btn-block'>
+                  <input type='submit' id='submit' class='btn btn-primary col-xs-10' />
+                  <button type="button" class="btn btn-primary dropdown-toggle col-xs-2" data-toggle="dropdown">
+                    <span class="caret"></span>
+                    <span class="sr-only">Toggle Dropdown</span>
+                  </button>
+                  <ul class="dropdown-menu btn-block">
+                    <li><a href="#" id='save-draft'>Enregistrer comme brouillon</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div id='result' role='alert' class='alert hidden'></div>
+    </div>
+  </body>
+</html>

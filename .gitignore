@@ -1,3 +1,6 @@
+# Avoid the real config file to be uploaded
+config.py
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
