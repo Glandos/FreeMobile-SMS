@@ -28,8 +28,16 @@
         <div class="col-sm-12 col-md-10">
           <form id='sms_form'>
             <div class="row">
+              <div class="col-xs-12">
+                <div class="input-group">
+                  <span class="input-group-addon" id="basic-addon1">De la part de</span>
+                  <input type="text" class="form-control" placeholder="Nom ou pseudonyme" aria-describedby="basic-addon1">
+                </div>
+              </div>
+            </div>
+            <div class="row">
               <div class="col-xs-12 col-sm-9">
-                <textarea  placeholder="Contenu du SMS. N'oubliez pas de le signer !" required name='content' maxlength='1600' class='form-control' rows='4' autofocus></textarea>
+                <textarea  placeholder="Contenu du SMS" required name='content' maxlength='1600' class='form-control' rows='4' autofocus></textarea>
               </div>
               <div class="col-xs-12 col-sm-3">
                 <div class='btn-group btn-block'>
