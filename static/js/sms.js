@@ -43,7 +43,8 @@ $( document ).ready(function()
       dataType: 'json',
       data: {
         text: $('textarea[name="content"]').val(),
-        dest: dest_div.find('a.active').text()
+        dest: dest_div.find('a.active').text(),
+        from: $('input[name="from"]').val()
       },
       success: function (json) {
         var message = CODE_STATUSES[json.code];
