@@ -17,8 +17,11 @@ def main_page():
 def send():
     text = request.form['text']
     dest = request.form['dest']
+    exp = request.form['from'] if 'from' in request.form else None
     user, key = users.get(dest, (None, None))
     if user and text:
+        if exp:
+            text = '{}: {}'.format(exp, text)
         # The doc says that POST is supported, but test says it is not.
         r = requests.get('https://smsapi.free-mobile.fr/sendmsg',
                           params={'user': user, 'pass': key, 'msg': text}
