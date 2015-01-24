@@ -15,9 +15,9 @@ def main_page():
 
 @app.route('/send', methods=['POST'])
 def send():
-    text = request.form['text']
+    text = request.form['text'].strip()
     dest = request.form['dest']
-    exp = request.form['from'] if 'from' in request.form else None
+    exp = request.form['from'].strip() if 'from' in request.form else None
     user, key = users.get(dest, (None, None))
     if user and text:
         if exp:
