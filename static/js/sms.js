@@ -29,9 +29,10 @@ $( document ).ready(function()
 // Activate dest
   var dest_div = $('div#dest');
   var dest_links = dest_div.find('a');
-  dest_links.click(function () {
+  dest_links.click(function (event) {
     dest_links.removeClass('active');
     $(this).addClass('active');
+    event.preventDefault();
   });
 
   function sendSMS()
