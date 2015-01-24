@@ -13,9 +13,9 @@ $( document ).ready(function()
 
   var RESULT_DIV = $('#result');
 
-  RESULT_DIV.ajaxStart(function () {
-    $(this).removeClass("alert-success alert-danger");
-    $(this).addClass("hidden");
+  $(document).ajaxStart(function () {
+    RESULT_DIV.addClass("hidden");
+    RESULT_DIV.removeClass("alert-success alert-danger");
   });
 
   var SMS_FORM = $('#sms_form');
