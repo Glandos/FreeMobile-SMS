@@ -13,11 +13,6 @@ $( document ).ready(function()
 
   var RESULT_DIV = $('#result');
 
-  $(document).ajaxStart(function () {
-    RESULT_DIV.addClass("hidden");
-    RESULT_DIV.removeClass("alert-success alert-danger");
-  });
-
   var SMS_FORM = $('#sms_form');
   SMS_FORM.ajaxStart(function () {
     $(this).find(':input').prop('disabled', true);
@@ -46,23 +41,29 @@ $( document ).ready(function()
         dest: dest_div.find('a.active').text(),
         from: $('input[name="from"]').val()
       },
+      complete: function() {
+        $("#resultModal").modal();
+      },
       success: function (json) {
         var message = CODE_STATUSES[json.code];
         if (message === undefined) {
           message = "Code de retour non connu";
         }
         RESULT_DIV.text(message);
+        RESULT_DIV.removeClass();
         if (json.code === 200) {
-          RESULT_DIV.addClass('alert-success');
+          RESULT_DIV.addClass('alert alert-success text-center');
+          // Clear the form
+          SMS_FORM.trigger('reset');
         } else {
-          RESULT_DIV.addClass('alert-danger');
+          RESULT_DIV.addClass('alert alert-danger text-center');
         }
-        RESULT_DIV.removeClass('hidden');
+        
       },
       error: function (xhr, status, errorThrown) {
         RESULT_DIV.text("Impossible d'envoyer le SMS, veuiller me contacter si le problème persiste");
-        RESULT_DIV.addClass('alert-danger');
-        RESULT_DIV.removeClass('hidden');
+        RESULT_DIV.removeClass();
+        RESULT_DIV.addClass('alert alert-danger text-center');
         console.log("Error: " + errorThrown);
         console.log("Status: " + status);
         console.dir(xhr);

@@ -55,7 +55,24 @@
           </form>
         </div>
       </div>
-      <div id='result' role='alert' class='alert hidden'></div>
+
+      <!-- Modal -->
+      <div class="modal fade" id="resultModal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-body">
+              <div id='result' role='alert' class='alert text-center'></div>
+              <div class='row'>
+                <div class='col-xs-12 col-sm-2 col-sm-offset-10'>
+                  <button type="button" class="btn btn-default btn-block" data-dismiss="modal">
+                    Close
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </body>
 </html>
