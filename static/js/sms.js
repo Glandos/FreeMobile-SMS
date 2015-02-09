@@ -38,7 +38,7 @@ $( document ).ready(function()
       dataType: 'json',
       data: {
         text: $('textarea[name="content"]').val(),
-        dest: dest_div.find('a.active').text(),
+        dest: $('input[name="dest"]:checked').val(),
         from: $('input[name="from"]').val()
       },
       complete: function() {
