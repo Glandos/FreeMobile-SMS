@@ -77,10 +77,12 @@ $( document ).ready(function()
       }
     });
   }
-  ;
 
+  fillForm();
   $('#sms_form').submit(function (event) {
     sendSMS();
+    // Remember details
+    rememberDetails();
     event.preventDefault();
   });
 
