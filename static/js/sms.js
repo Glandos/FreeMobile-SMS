@@ -61,7 +61,7 @@ $( document ).ready(function()
         if (json.code === 200) {
           RESULT_DIV.addClass('alert alert-success text-center');
           // Clear the form
-          SMS_FORM.trigger('reset');
+          $('textarea[name="content"]').val('');
         } else {
           RESULT_DIV.addClass('alert alert-danger text-center');
         }
