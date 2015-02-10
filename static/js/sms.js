@@ -21,6 +21,21 @@ $( document ).ready(function()
     $(this).find(':input').prop('disabled', false);
   });
 
+  function rememberDetails() {
+    localStorage.setItem("dest", $('input[name="dest"]:checked').val());
+    localStorage.setItem("from", $('input[name="from"]').val());
+  }
+
+  function fillForm() {
+    var dest = localStorage.getItem('dest');
+    var from = localStorage.getItem('from');
+    if (dest) {
+      $('input[name="dest"][value=' + dest + ']').parent().button('toggle');
+    }
+    if (from) {
+      $('input[name="from"]').val(from);
+    }
+  }
 
   function sendSMS()
   {
